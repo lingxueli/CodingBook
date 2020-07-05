@@ -22,9 +22,21 @@ class Solution:
         stack.append(n-2)
     return sum
 
+
+    def fibMemoized(self, n, cache = {}):
+        if n not in cache.keys():
+            cache[n] = self._fibMemoizedHelper(n, cache)
+        return cache[n]
+
+    def _fibMemoizedHelper(self, n, cache):
+        if n < 2:
+          return n
+        else:
+          return self.fibMemoized(n-1, cache) + self.fibMemoized(n-2, cache)
+
 print Solution().fib(10)
 print Solution().fibIterative(10)
-
+print Solution().fibMemoized(10)
 
 
 # max number of connected color in a 2D matrix
