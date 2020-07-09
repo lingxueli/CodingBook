@@ -17,7 +17,7 @@ class BST:
     def insert(self, value):
         # Write your code here.
         # Do not edit the return statement of this method.
-		node = self
+        node = self
         while True:
             if value < node.value:
                 if node.left == None:
@@ -58,22 +58,19 @@ class BST:
                 parent = node
                 node = node.right
             else:
-				# hit the node that's going to be removed
-				# case 1: if the node to be removed has two child nodes
+                # case 1: if the node to be removed has two child nodes
                 if node.left != None and node.right != None:
-					deleteNode = node.right.getMinNode()
+                    deleteNode = node.right.getMinNode()
 					newNode = BST(deleteNode.value)
 					parent.right = newNode
 					newNode.left = node.left
 					newNode.right = node.right
 					deleteNode = None
-
-				# case 2: if the node to be remove is leaf
-				elif node.left == None and node.right == None:
-					node = None
-
+                # case 2: if the node to be remove is leaf
+                elif node.left == None and node.right == None:
+                    node = None
 				# case 3: if the node to be removed has one child
-				else:
+                else:
 					if node.left != None:
 						if parent.left == node:
 							parent.left = node.left
