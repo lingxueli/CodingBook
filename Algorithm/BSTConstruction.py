@@ -61,27 +61,27 @@ class BST:
                 # case 1: if the node to be removed has two child nodes
                 if node.left != None and node.right != None:
                     deleteNode = node.right.getMinNode()
-					newNode = BST(deleteNode.value)
-					parent.right = newNode
-					newNode.left = node.left
-					newNode.right = node.right
-					deleteNode = None
+                    newNode = BST(deleteNode.value)
+                    parent.right = newNode
+                    newNode.left = node.left
+                    newNode.right = node.right
+                    deleteNode = None
                 # case 2: if the node to be remove is leaf
                 elif node.left == None and node.right == None:
                     node = None
-				# case 3: if the node to be removed has one child
+                # case 3: if the node to be removed has one child
                 else:
-					if node.left != None:
-						if parent.left == node:
-							parent.left = node.left
-						else:
-							parent.right = node.left
-					else:
-						if parent.left == node:
-							parent.left = node.right
-						else:
-							parent.right = node.right
-				break
+                    if node.left != None:
+                        if parent.left == node:
+                            parent.left = node.left
+                        else:
+                            parent.right = node.left
+                    else:
+                        if parent.left == node:
+                            parent.left = node.right
+                        else:
+                            parent.right = node.right
+                break
         return self
 
     def getMinNode(self):
