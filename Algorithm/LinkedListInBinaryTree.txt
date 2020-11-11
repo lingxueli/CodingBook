@@ -1,0 +1,69 @@
+Linked List in Binary Tree
+
+DP, Tree
+
+https://leetcode.com/problems/linked-list-in-binary-tree/
+
+1. DFS
+
+if the linkedlist is a downpath
+	start from the treenode A, dfs from here, there's a matching path
+
+	the next node to visit in the tree could be A.left or right
+
+	move both pointer in linkedinlist and tree at the same time
+
+	if there is not a match, quit dfs(A). Try dfs(a.left) and dfs(a.right)
+
+
+	dfs(root, head)
+		if root.value = head.value
+			dfs(root.left, head.next) || dfs(root.right, head.next)
+			---> signal it might be a match
+		else
+			---> signal it's not a match, try other starting point
+			dfs(root.left, head) || dfs(root.right, head)
+
+
+	dfs1(root, head)
+		if root.value = head.value
+			dfs2(root.left, head.next) || dfs2(root.right, head.next)  //dfs2 might be dfs1
+			---> signal it might be a match
+		else
+			---> signal it's not a match, try other starting point
+			dfs1(root.left, head) || dfs1(root.right, head)
+
+Tree
+t1 -> t2 -> t3 ...
+LinkedList
+l1 -> l2 -> l3 -> l4 ...
+
+if dfs1 == dfs2
+	dfs1(t1, l1)
+		t1== l1, match
+			dfs1(t2, l2)
+
+dfs1(t2, l2)
+	t2 != l2, not a match
+		dfs1(t2.left, l2) || dfs1(t2.right, l2)  
+		i.e. dfs1(t3, l2)  	// wrong, shouldn't checked further. Even if it's a match afterward, that's not a match as a whole, because the path is already broken. prove that dfs1 is not dfs2
+
+
+dfs2: Given previous path is a match, find out if the path ahead is a match
+
+dfs1: No previous path was checked, dfs from the new start point
+
+
+	dfs1(root, head)
+		if root.value = head.value
+			return dfs2(root.left, head.next) || dfs2(root.right, head.next)  //dfs2 might be dfs1
+			---> signal it might be a match
+		else
+			---> signal it's not a match, try other starting point
+			return dfs1(root.left, head) || dfs1(root.right, head)
+
+	dfs2(t,l)
+		if t.value==l.value
+			return dfs2(t.left, l.next) || dfs2(t.right, l.next)
+		else
+			return false
