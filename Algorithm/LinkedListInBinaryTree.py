@@ -1,6 +1,9 @@
 # Linked List in Binary Tree
 # https://leetcode.com/problems/linked-list-in-binary-tree/
 
+# Case not passed
+# Input: [1,10] [1,null,1,10,1,9] Output: false
+
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
