@@ -1,9 +1,6 @@
 # Linked List in Binary Tree
 # https://leetcode.com/problems/linked-list-in-binary-tree/
 
-# Case not passed
-# Input: [1,10] [1,null,1,10,1,9] Output: false
-
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -24,7 +21,8 @@ class Solution:
         
         if head.val == root.val:
             return self.matchedContinue(head.next, root.left) \
-                or self.matchedContinue(head.next, root.right)
+                or self.matchedContinue(head.next, root.right) \
+                or self.isSubPath(head, root.left) or self.isSubPath(head, root.right)
         else:
             return self.isSubPath(head, root.left) or self.isSubPath(head, root.right)
     
