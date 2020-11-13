@@ -56,8 +56,25 @@ dfs1: No previous path was checked, dfs from the new start point
 
 	dfs1(root, head)
 		if root.value = head.value
-			return dfs2(root.left, head.next) || dfs2(root.right, head.next)  //dfs2 might be dfs1
+			return dfs2(root.left, head.next) || dfs2(root.right, head.next)
 			---> signal it might be a match
+		else
+			---> signal it's not a match, try other starting point
+			return dfs1(root.left, head) || dfs1(root.right, head)
+
+	dfs2(t,l)
+		if t.value==l.value
+			return dfs2(t.left, l.next) || dfs2(t.right, l.next)
+		else
+			return false
+
+Don't miss this:
+	dfs1(root, head)
+		if root.value = head.value
+			return dfs2(root.left, head.next) || dfs2(root.right, head.next)
+			---> signal it might be a match
+			---> if there's no match in the following node, continue search with a new start point
+				i.e. dfs1(root.left, head) || dfs1(root.right.head)
 		else
 			---> signal it's not a match, try other starting point
 			return dfs1(root.left, head) || dfs1(root.right, head)
