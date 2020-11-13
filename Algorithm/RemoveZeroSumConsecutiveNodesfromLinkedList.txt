@@ -1,0 +1,82 @@
+Remove Zero Sum Consecutive Nodes from Linked List
+
+https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/
+
+Linked List
+
+1 2 -3 3 1
+------ 
+sum = 0
+
+head = 3
+
+4 1 2 -3 3 1
+  ------
+  sum = 0
+
+4.next = 3
+
+4 3 1 1 2 -3 
+      ------
+      sum = 0
+
+1.next = none
+
+
+4 -5 2 1 2 -3 3 1
+
+i = 1
+	sum start from A[0]
+
+i = 2:
+	sum start from A[0]
+	sum start from A[1]
+
+i:
+	sum start from A[0]
+	sum start from A[1]
+	...
+	sum start from A[x] -> sum = 0
+	sum start from A[i-1]
+
+i: 
+	search from key = -A[i]
+
+hashmap:
+	key: - sum start from A[0] -> value: index
+	key: - sum start from A[1] ...
+	...
+	key: - sum start from A[i-1] ...
+
+
+i:
+	found A[i] in hashmap
+
+	A[0]... A[j]...A[i-1] A[i]
+			-------------
+			sum = -A[i]
+
+	For key == -A[i], the hash value should be index = j - 1 in order to remove it from linkedlist
+	i.e. the index before the subarray to be removed
+
+
+class Solution:
+    def removeZeroSumSublists(self, head: ListNode) -> ListNode:
+        sumIndexMap = {}
+        
+        dummy = ListNode()
+        dummy.next = head
+        prev = dummy
+        cur = head
+        
+        while not cur:
+            # check if there's a match from the hashmap
+            if cur.value in sumIndexMap:
+                sumIndexMap[cur.value].next = cur.next
+                return dummy.next // in case head is removed
+            # add to the hashmap
+            else:
+                sumIndexMap[-cur.val] = prev
+                ## you should add current value to all the prefixes
+            cur = cur.next
+            prev = prev.next
