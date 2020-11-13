@@ -84,3 +84,37 @@ Don't miss this:
 			return dfs2(t.left, l.next) || dfs2(t.right, l.next)
 		else
 			return false
+
+
+The code can be simplied
+        if head.val == root.val:
+            return self.matchedContinue(head.next, root.left) \
+                or self.matchedContinue(head.next, root.right) \
+                or self.isSubPath(head, root.left) \
+                or self.isSubPath(head, root.right)
+        else:
+            return self.isSubPath(head, root.left) or self.isSubPath(head, root.right)
+
+
+transform to:
+        return ( head.val == root.val and (self.matchedContinue(head.next, root.left) \
+              or self.matchedContinue(head.next, root.right) \
+              or self.isSubPath(head, root.left) \
+              or self.isSubPath(head, root.right) )     ) \
+              or self.isSubPath(head, root.left) or self.isSubPath(head, root.right)
+
+Because
+              ( A and (B or C or D or E) ) or D or E
+
+              if A == false and D == true
+              		return true
+              if D == E == false and A == B == true
+              		return true
+              if D == E == false and A == B == C == false
+              		return false
+              ( A and (B or C or D or E) ) or D or E = ( A and (B or C ) ) or D or E
+
+further transform to:
+		        return ( head.val == root.val and (self.matchedContinue(head.next, root.left) \
+              or self.matchedContinue(head.next, root.right) ) ) \
+              or self.isSubPath(head, root.left) or self.isSubPath(head, root.right)
