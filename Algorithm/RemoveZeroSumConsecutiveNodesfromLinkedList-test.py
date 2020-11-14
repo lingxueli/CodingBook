@@ -1,7 +1,3 @@
-# Remove Zero Sum Consecutive Nodes from Linked List
-
-# https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/
-
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -49,3 +45,4 @@ s = Solution()
 node = ListNode(1,ListNode(2,ListNode(-3,ListNode(3,ListNode(1)))))
 
 print(s.removeZeroSumSublists(node))
+

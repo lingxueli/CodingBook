@@ -73,10 +73,29 @@ class Solution:
             # check if there's a match from the hashmap
             if cur.value in sumIndexMap:
                 sumIndexMap[cur.value].next = cur.next
+                ## this is wrong
+                ## you also want to repeadly delete the zero-sum group. To return here is too early.
                 return dummy.next // in case head is removed
             # add to the hashmap
             else:
                 sumIndexMap[-cur.val] = prev
+                ## this is wrong
                 ## you should add current value to all the prefixes
             cur = cur.next
             prev = prev.next
+
+Another way:
+sum[0...M] + sum[M+1, ... N] = sum[0...N]
+                0
+
+hashmap: prefix sum -> node
+
+iteration sum[0...N]:
+    sum[0...M] == sum[0...N]
+    sum[M+1,...N] == 0
+
+    linked node M with node N+1
+
+    hashmap: sum[0....M] -> node M
+
+
