@@ -41,14 +41,3 @@ del dct[key]
 
 # Finally, if you try to remove a key from prices by using .keys() directly, then Python will raise a RuntimeError telling you that the dictionary’s size has changed during iteration:
 
->>> # Python 3. dict.keys() returns a view object, not a list
->>> prices = {'apple': 0.40, 'orange': 0.35, 'banana': 0.25}
->>> for key in prices.keys():
-...     if key == 'orange':
-...         del prices[key]
-...
-Traceback (most recent call last):
-  File "<input>", line 1, in <module>
-    for key in prices.keys():
-RuntimeError: dictionary changed size during iteration
-

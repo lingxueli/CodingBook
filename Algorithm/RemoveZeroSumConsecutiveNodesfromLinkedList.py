@@ -8,6 +8,7 @@
 #         self.val = val
 #         self.next = next
 
+from collections import OrderedDict
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -63,6 +64,7 @@ node = ListNode(1,ListNode(2,ListNode(-3,ListNode(3,ListNode(1)))))
 
 print(s.removeZeroSumSublists(node))
 
+# input [1,3,2,-3,-2,5,5,-5,1]
 node1 = ListNode(1,ListNode(3,ListNode(2,ListNode(-3,ListNode(-2,ListNode(5,ListNode(5,ListNode(-5,ListNode(1)))))))))
 
 print(s.removeZeroSumSublists(node1))
