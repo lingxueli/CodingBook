@@ -22,3 +22,33 @@ print('hi {}. You are {} years old'.format(name, age))
 print('hi {1}. You are {0} years old'.format(name, age))
 # specify the order
 print('hi {name}. You are {age} years old'.format(name='sally', age=21))
+
+
+# string indexing/slicing
+# [start:stop:stepover]
+test = '01234567'
+print(test[0:8:2])
+
+print(test[1:])
+
+print(test[:5])
+
+print(test[::1])
+
+print(test[::-1])
+
+print(test[0:8:-1])
+
+print(test[0:8:-2])
+
+print(test[::-2])
+
+print(test[-1])
+
+print(test[-2])
+
+# string is immutable
+# test[1] = '8' won't work
+# test = test + '8' will work because it creates a new string
+
+
