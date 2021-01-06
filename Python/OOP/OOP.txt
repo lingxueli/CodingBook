@@ -1,0 +1,13 @@
+# 4 pillars of OOP
+
+# encapsulation
+# wrap attribute and method in a class
+
+# abstration
+# hide away the details of the implementation, only expost what's necessary
+
+# inheritance
+# abstracting away the code that's shared , create unique attribute and method
+
+# polymorphism
+# share the same method name, generate different output due to different implementation
