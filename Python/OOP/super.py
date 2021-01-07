@@ -18,7 +18,7 @@ class Wizard(User):
         User.__init__(self, email)
 
         # another way to inherit the attribute
-        # super() refers to the parent class
+        # super() refers to the parent class above it
         super().__init__(email)
 
         self.name = name
