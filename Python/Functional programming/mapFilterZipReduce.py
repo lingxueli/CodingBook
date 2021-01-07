@@ -1,14 +1,6 @@
-# functional programming
-# pure functions
-# separate data and function
-
-def multiple_by2(li):
-    new_list = []
-    for item in li:
-        new_list.append(item * 2)
-    return new_list
-
 # map, filter, zip and reduce
+
+from functools import reduce
 
 # map()
 # map(action, iterable)
@@ -45,3 +37,13 @@ their_list = [5,4,3]
 
 print(list(zip(my_list, your_list, their_list)))
 # [(1,10,5),(2,20,4),(3,30,3)]
+
+# reduce()
+# reduce(function, sequence[,initial])
+
+def accumulator(a, b):
+    print(a,b)
+    return a + b
+
+print(reduce(accumulator, my_list, 0)) # 0 + 1 + 2 + 3
+print(reduce(accumulator, my_list, 10)) # 10 + 1 + 2 + 3
